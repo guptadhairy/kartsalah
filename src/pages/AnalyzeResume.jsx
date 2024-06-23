@@ -63,7 +63,7 @@ const AnalyzeResume = () => {
             </div>
           </div>
 
-          <div className="flex w-[35vw]">
+          <div className="flex-1 lg:w-[35%] h-full">
             <ResumeDisplay />
           </div>
         </div>

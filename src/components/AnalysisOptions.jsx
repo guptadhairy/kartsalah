@@ -19,11 +19,9 @@ const AnalysisOptions = () => {
   ];
 
   return (
-    <div className="max-h-[490px] w-[212px] min-w-[190px] bg-white shadow-lg rounded-lg p-2">
+    <div className="max-h-[490px] w-full md:w-[212px] min-w-[190px] bg-white shadow-lg rounded-lg p-2">
       <div className="mb-6">
-        <h2 className="text-sm font-bold text-dp mb-2">
-          Criteria Based Analysis
-        </h2>
+        <h2 className="text-sm font-bold text-dp mb-2">Criteria Based Analysis</h2>
         <div className="w-full h-px bg-gray-200 mb-4"></div>
         <div className="flex flex-col space-y-2">
           <button
@@ -51,7 +49,7 @@ const AnalysisOptions = () => {
               <i className="inline-block mx-1 text-lg">
                 <CgProfile />
               </i>
-              Select a Role Based    
+              Select a Role Based
             </button>
             {showRoleDropdown && (
               <div className="absolute z-10 mt-2 w-full bg-white rounded-md shadow-lg">
@@ -99,9 +97,7 @@ const AnalysisOptions = () => {
         </div>
       </div>
       <div className="pt-[100px]">
-        <h2 className="text-sm font-bold text-dp mb-2">
-          Tools to improve score
-        </h2>
+        <h2 className="text-sm font-bold text-dp mb-2">Tools to improve score</h2>
         <div className="w-full h-px bg-gray-200 mb-4"></div>
         <div className="flex flex-col space-y-1">
           <button className="text-left text-xs p-2 text-gray-600 rounded-lg hover:bg-gray-100">

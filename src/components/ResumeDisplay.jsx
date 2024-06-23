@@ -1,12 +1,9 @@
 import i from '../assets/i.png';
 
-
 const ResumeDisplay = () => (
+  <div className="w-full h-full flex justify-center items-center">
+    <img src={i} alt="Resume" className="max-w-full max-h-full object-contain" />
+  </div>
+);
 
-    <div className="w-full h-full ">
-        <img src={i} alt="i" className="w-full h-full" />   
-
-        </div>
-);  
-
-export default ResumeDisplay;   
+export default ResumeDisplay;
