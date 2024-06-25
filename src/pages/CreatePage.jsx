@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import SideBar from "../components/SideBar";
 import TopBar from "../components/TopBar";
-import Card from "../components/Card";
-import { Link } from "react-router-dom";
 import ProgressSteps from "../components/ProgressSteps";
 
 import rect from "../assets/comp.png"; // Update this with your actual image paths

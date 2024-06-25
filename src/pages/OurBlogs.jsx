@@ -69,14 +69,14 @@ const OurBlogs = () => {
             <TopBar />
           </div> 
         </div>
-        <div className="flex items-center mt-[100px] gap-[181px]">
-          <Link
+        <div className="flex items-center mt-[100px] justify-center">
+          {/* <Link
             to={"/createblogs"}
-            className="ml-10 text-blue-800 border-2 border-purple-700 p-2 rounded-3xl flex justify-center items-center gap-2 font-medium text-xl"
+            className=" text-blue-800 border-2 border-purple-700 p-2 rounded-3xl flex justify-center items-center gap-2 font-medium text-xl"
           >
              Create Blog
-          </Link>
-          <div className=" text-center  w-[400px]">
+          </Link> */}
+          <div className=" text-center justify-center ">
             <div className="text-5xl font-medium text-blue-900 ">
               SalahKart Blogs
             </div>

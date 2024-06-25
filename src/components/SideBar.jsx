@@ -6,10 +6,10 @@ import { CgProfile } from 'react-icons/cg';
 import { FaBloggerB } from 'react-icons/fa';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { Link, useLocation } from 'react-router-dom';
-import { BiExpand, BiCollapse, BiMenu } from 'react-icons/bi';
-import { ReactComponent as YourSvg } from '../assets/linkedlogo.svg';
+import { BiCollapse, BiMenu } from 'react-icons/bi';
+import { TiDocumentText } from "react-icons/ti";
 import sk from '../assets/logo.svg';
-import { MdOutlineShowChart } from 'react-icons/md';
+import { MdOutlineShowChart, MdOutlineQuestionAnswer } from 'react-icons/md';
 
 const SideBar = ({ isExpanded, setIsExpanded }) => {
   const location = useLocation();
@@ -82,7 +82,7 @@ const SideBar = ({ isExpanded, setIsExpanded }) => {
               to="/linkedin"
               className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/linkedin')} h-12`}
             >
-              <YourSvg className={`h-8 w-8 ${getLinkClassName('/linkedin') ? 'fill-current text-white' : ''}`} />
+              <CiLinkedin className="h-8 w-8" />
               {isExpanded && <span className="text-lg lg:text-xl">Optimize LinkedIn</span>}
             </Link>
             <Link
@@ -95,26 +95,20 @@ const SideBar = ({ isExpanded, setIsExpanded }) => {
           </div>
           <div className="flex flex-col px-4 lg:px-6 gap-4 mt-auto mb-4">
             <Link
-              to="/updateprofile"
-              className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/updateprofile')} h-12`}
+              to="/coverletter"
+              className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/coverletter')} h-12`}
             >
-              <CgProfile className="h-8 w-8" />
-              {isExpanded && <span className="text-lg lg:text-xl">Update Your Profile</span>}
+              <TiDocumentText className="h-8 w-8" />
+              {isExpanded && <span className="text-lg lg:text-xl">Cover Letter Generation</span>}
             </Link>
             <Link
               to="/settings"
               className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/settings')} h-12`}
             >
-              <IoSettingsOutline className="h-8 w-8" />
-              {isExpanded && <span className="text-lg lg:text-xl">Settings</span>}
+              <MdOutlineQuestionAnswer className="h-8 w-8" />
+              {isExpanded && <span className="text-lg lg:text-xl">Interview Questions</span>}
             </Link>
-            <Link
-              to="/logout"
-              className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/logout')} h-12`}
-            >
-              <CiLogin className="h-8 w-8" />
-              {isExpanded && <span className="text-lg lg:text-xl">Logout</span>}
-            </Link>
+            
           </div>
         </div>
       </div>
@@ -156,7 +150,7 @@ const SideBar = ({ isExpanded, setIsExpanded }) => {
                 to="/linkedin"
                 className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/linkedin')} h-12`}
               >
-                <YourSvg className={`h-8 w-8 ${getLinkClassName('/linkedin') ? 'fill-current text-white' : ''}`} />
+                <CiLinkedin className="h-8 w-8" />
                 <span className="text-lg lg:text-xl">Optimize LinkedIn</span>
               </Link>
               <Link
@@ -169,26 +163,20 @@ const SideBar = ({ isExpanded, setIsExpanded }) => {
             </div>
             <div className="flex flex-col gap-4 mt-auto">
               <Link
-                to="/updateprofile"
-                className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/updateprofile')} h-12`}
+                to="/coverletter"
+                className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/coverletter')} h-12`}
               >
-                <CgProfile className="h-8 w-8" />
-                <span className="text-lg lg:text-xl">Update Your Profile</span>
+                <TiDocumentText className="h-8 w-8" />
+                <span className="text-lg lg:text-xl">Cover Letter</span>
               </Link>
               <Link
                 to="/settings"
                 className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/settings')} h-12`}
               >
-                <IoSettingsOutline className="h-8 w-8" />
-                <span className="text-lg lg:text-xl">Settings</span>
+                <MdOutlineQuestionAnswer className="h-8 w-8" />
+                <span className="text-lg lg:text-xl">Interview Questions</span>
               </Link>
-              <Link
-                to="/logout"
-                className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/logout')} h-12`}
-              >
-                <CiLogin className="h-8 w-8" />
-                <span className="text-lg lg:text-xl">Logout</span>
-              </Link>
+              
             </div>
           </div>
         </div>

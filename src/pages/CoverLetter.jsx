@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import SideBar from "../components/SideBar";
 import { IoIosSearch, IoMdArrowDropdown } from "react-icons/io";
 import { FaBell } from "react-icons/fa";
@@ -7,6 +7,29 @@ import CoverLetterGeneration from "../components/CoverLetterGeneration";
 
 const CoverLetter = () => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isDropdownExpanded, setIsDropdownExpanded] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const toggleDropdown = () => {
+    setIsDropdownExpanded(!isDropdownExpanded);
+  };
+
+  const closeDropdown = () => {
+    setIsDropdownExpanded(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        closeDropdown();
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className="flex flex-col lg:flex-row h-screen">
       <SideBar isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
@@ -33,7 +56,7 @@ const CoverLetter = () => {
             <div className="w-full max-w-[350px] h-[40px] flex justify-between items-center px-4 lg:px-0 mt-4 sm:mt-0">
               <IoIosSearch className="h-6 w-6 text-gray-500" />
               <FaBell className="h-6 w-6 text-gray-500" />
-              <div className="flex gap-2 bg-blue-900 rounded-full h-9 max-w-[200px] justify-between items-center p-1">
+              <div className="flex gap-2 bg-blue-900 rounded-full h-9 max-w-[200px] justify-between items-center p-1 relative">
                 <div className="relative">
                   <div className="bg-white rounded-full h-7 w-7 flex items-center justify-center">
                     <img
@@ -44,7 +67,31 @@ const CoverLetter = () => {
                   </div>
                 </div>
                 <div className="text-white text-sm truncate">Dhairya Gupta</div>
-                <IoMdArrowDropdown className="h-6 w-6 text-white" />
+                <div onClick={toggleDropdown}>
+                  <IoMdArrowDropdown className="h-6 w-6 text-white cursor-pointer" />
+                </div>
+                {isDropdownExpanded && (
+                  <div ref={dropdownRef} className="absolute right-0 mt-[150px] w-48 bg-white rounded-lg shadow-lg z-10">
+                    <button
+                      onClick={closeDropdown}
+                      className="block w-full text-left py-2 px-4 text-sm text-gray-800 hover:bg-gray-200 focus:outline-none"
+                    >
+                      Sign Out
+                    </button>
+                    <button
+                      onClick={closeDropdown}
+                      className="block w-full text-left py-2 px-4 text-sm text-gray-800 hover:bg-gray-200 focus:outline-none"
+                    >
+                      Update Profile
+                    </button>
+                    <button
+                      onClick={closeDropdown}
+                      className="block w-full text-left py-2 px-4 text-sm text-gray-800 hover:bg-gray-200 focus:outline-none"
+                    >
+                      Settings
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
