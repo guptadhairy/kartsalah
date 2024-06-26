@@ -1,7 +1,12 @@
 import React from "react";
 import cover from "../assets/coverletter.png";
+import { useNavigate } from "react-router-dom";
 
 const CoverLetterGeneration = () => {
+  const navigate = useNavigate()
+  const submitHandler = ()=> {
+    navigate("/maincontent")
+  }
   return (
     <div className="flex flex-col md:flex-row w-full h-full p-6 relative">
       {/* Blue Background for Right Section */}
@@ -78,7 +83,7 @@ const CoverLetterGeneration = () => {
             placeholder="Enter the Job Description & Targeting Company"
           />
         </div>
-        <button className="w-full bg-gradient-to-br from-[#868CFF] to-[#4318FF] text-white p-2 rounded">
+        <button onClick={submitHandler} className="w-full bg-gradient-to-br from-[#868CFF] to-[#4318FF] text-white p-2 rounded">
           Generate
         </button>
       </div>

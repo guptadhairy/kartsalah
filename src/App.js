@@ -15,6 +15,7 @@ import Blog1 from './pages/Blog1'
 import ResumeUpload from './pages/ResumeUpload'
 import CreateBlogs from './pages/CreatePage' 
 import CoverLetter from './pages/CoverLetter'
+import MainContent from './pages/MainContent'
 
 
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
       <Route path='/resumeupload' element={<ResumeUpload />} />
       <Route path='/createblogs' element={<CreateBlogs />} />
       <Route path='/coverletter' element={<CoverLetter />} />
+      <Route path='/maincontent' element={<MainContent />} />
     </Routes>
    </Router>
   )
