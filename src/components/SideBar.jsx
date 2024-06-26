@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
 import { AiOutlineFileDone } from 'react-icons/ai';
 import { RiContactsBookFill } from 'react-icons/ri';
-import { CiLinkedin, CiLogin } from 'react-icons/ci';
-import { CgProfile } from 'react-icons/cg';
+import { CiLinkedin } from 'react-icons/ci';
 import { FaBloggerB } from 'react-icons/fa';
-import { IoSettingsOutline } from 'react-icons/io5';
-import { Link, useLocation } from 'react-router-dom';
 import { BiCollapse, BiMenu } from 'react-icons/bi';
 import { TiDocumentText } from "react-icons/ti";
 import sk from '../assets/logo.svg';
 import { MdOutlineShowChart, MdOutlineQuestionAnswer } from 'react-icons/md';
+import { Link, useLocation } from 'react-router-dom';
 
 const SideBar = ({ isExpanded, setIsExpanded }) => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const getLinkClassName = (path) => {
-    return location.pathname === path
+  const getLinkClassName = (...paths) => {
+    return paths.includes(location.pathname)
       ? 'text-white bg-gradient-to-br from-[#868CFF] to-[#4318FF] rounded-lg'
       : 'text-black';
   };
@@ -59,7 +57,7 @@ const SideBar = ({ isExpanded, setIsExpanded }) => {
           <div className="flex flex-col gap-4 px-4 lg:px-6 mt-6">
             <Link
               to="/checkscore"
-              className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/checkscore')} h-12`}
+              className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/checkscore', '/resumeupload')} h-12`}
             >
               <AiOutlineFileDone className="h-8 w-8" />
               {isExpanded && <span className="text-lg lg:text-xl">Resume Score Check</span>}
@@ -96,7 +94,7 @@ const SideBar = ({ isExpanded, setIsExpanded }) => {
           <div className="flex flex-col px-4 lg:px-6 gap-4 mt-auto mb-4">
             <Link
               to="/coverletter"
-              className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/coverletter')} h-12`}
+              className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/coverletter','/maincontent')} h-12`}
             >
               <TiDocumentText className="h-8 w-8" />
               {isExpanded && <span className="text-lg lg:text-xl">Cover Letter Generation</span>}
@@ -127,7 +125,7 @@ const SideBar = ({ isExpanded, setIsExpanded }) => {
             <div className="flex flex-col gap-4">
               <Link
                 to="/checkscore"
-                className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/checkscore')} h-12`}
+                className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/checkscore', '/resumeupload')} h-12`}
               >
                 <AiOutlineFileDone className="h-8 w-8" />
                 <span className="text-lg lg:text-xl">Resume Score Check</span>
@@ -164,7 +162,7 @@ const SideBar = ({ isExpanded, setIsExpanded }) => {
             <div className="flex flex-col gap-4 mt-auto">
               <Link
                 to="/coverletter"
-                className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/coverletter')} h-12`}
+                className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/coverletter','/maincontent')} h-12`}
               >
                 <TiDocumentText className="h-8 w-8" />
                 <span className="text-lg lg:text-xl">Cover Letter</span>
