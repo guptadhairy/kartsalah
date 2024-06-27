@@ -3,9 +3,9 @@ import SideBar from "../components/SideBar";
 import { IoIosSearch, IoMdArrowDropdown } from "react-icons/io";
 import { FaBell } from "react-icons/fa";
 import avatar from "../assets/Avatar.png";
-import BuildResumePage1 from "../components/BuildResumePage1";
+import BuildResumePage2 from "../components/BuildResumePage2";
 
-const BuildResume = () => {
+const BuildResume2 = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isDropdownExpanded, setIsDropdownExpanded] = useState(false);
   const dropdownRef = useRef(null);
@@ -97,10 +97,10 @@ const BuildResume = () => {
           </div>
         </div>
 
-        <BuildResumePage1 />
+        <BuildResumePage2 />
       </div>
     </div>
   );
 };
 
-export default BuildResume;
+export default BuildResume2;

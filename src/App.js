@@ -16,6 +16,7 @@ import ResumeUpload from './pages/ResumeUpload'
 import CreateBlogs from './pages/CreatePage' 
 import CoverLetter from './pages/CoverLetter'
 import MainContent from './pages/MainContent'
+import BuildResume2 from './pages/BuildResume2'
 
 
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
       <Route path='/createblogs' element={<CreateBlogs />} />
       <Route path='/coverletter' element={<CoverLetter />} />
       <Route path='/maincontent' element={<MainContent />} />
+      <Route path='/buildresumepage2' element={<BuildResume2 />} />
     </Routes>
    </Router>
   )
