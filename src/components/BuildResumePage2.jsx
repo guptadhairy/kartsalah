@@ -1,8 +1,14 @@
 import React from "react";
 import temp from "../assets/Desktop6.png";
 import stepper from "../assets/StepperHorizontal.png"
+import { useNavigate } from "react-router-dom";
 
 const BuildResumePage2 = () => {
+    const navigate = useNavigate();
+    const submitHandler = () => {
+      navigate("/buildresumepage2");
+    };
+  
   const templates = [
     {
       imgSrc: temp, // Corrected here
@@ -52,7 +58,9 @@ const BuildResumePage2 = () => {
           ))}
         </div>
         <div className="flex space-x-4">
-          <button className=" bg-gradient-to-br from-[#787ef1] to-[#3710e7] bg-clip-text text-transparent ">
+          <button className=" bg-gradient-to-br from-[#787ef1] to-[#3710e7] bg-clip-text text-transparent "
+          onClick={submitHandler}
+          >
             Skip for now
           </button>
           <button className="bg-gradient-to-br from-[#787ef1] to-[#3710e7] text-white py-2 px-4 rounded-3xl">
