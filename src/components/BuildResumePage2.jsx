@@ -8,7 +8,10 @@ const BuildResumePage2 = () => {
     const submitHandler = () => {
       navigate("/buildresumepage2");
     };
-  
+    
+    const chooseHandler = () => {
+      navigate("/buildresumepage3")
+    }
   const templates = [
     {
       imgSrc: temp, // Corrected here
@@ -63,7 +66,7 @@ const BuildResumePage2 = () => {
           >
             Skip for now
           </button>
-          <button className="bg-gradient-to-br from-[#787ef1] to-[#3710e7] text-white py-2 px-4 rounded-3xl">
+          <button onClick={chooseHandler} className="bg-gradient-to-br from-[#787ef1] to-[#3710e7] text-white py-2 px-4 rounded-3xl">
             Choose Template
           </button>
         </div>
