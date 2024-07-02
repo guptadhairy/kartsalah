@@ -1,10 +1,37 @@
 import React, { useRef, useState } from 'react';
 import JoditEditor from 'jodit-react';
+import axios from "axios";
 
 const FinalLetter = () => {
-    const editor = useRef(null);
-	const [content, setContent] = useState('');
+  const editor = useRef(null);
+  const [jobRole, setJobRole] = useState("");
+  const [jobDescription, setJobDescription] = useState("");
+  const [answer, setAnswer] = useState("");
+
+  const generateAnswer = async () => {
+    setAnswer("Loading...");
     
+    // Combine job role and job description into a single prompt with instructions
+    const prompt = `Please create a cover letter for the following job role: ${jobRole}. Here is the job description and company information: ${jobDescription}`;
+
+    try {
+      const response = await axios.post('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyCsC1Vz1FkOhfCEI8D_VshclKtKD1fkXMo', {
+        contents: [
+          {
+            parts: [{ text: prompt }]
+          }
+        ]
+      });
+
+      // Extract the generated content
+      const generatedText = response.data.candidates[0].content.parts[0].text;
+      setAnswer(generatedText);
+    } catch (error) {
+      console.error('Error generating content:', error);
+      setAnswer("Error generating content. Please try again.");
+    }
+  }
+
   return (
     <div className="flex flex-col md:flex-row p-6  min-h-screen">
       {/* Cover Letter Generator Section */}
@@ -50,23 +77,26 @@ const FinalLetter = () => {
             </div>
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">Job Role</label>
-              <select className="w-full p-2 border border-gray-300 rounded">
-                <option value="" disabled selected>
-                  Select Your Job Role
-                </option>
-                {/* Add options here */}
-              </select>
+              <input
+                placeholder='Enter your Job Role'
+                className='w-full rounded-lg h-12 p-4'
+                value={jobRole}
+                onChange={(e) => setJobRole(e.target.value)}
+              />
             </div>
             <div className="mb-6">
               <label className="block text-gray-700 mb-2">
                 Job Description & Company
               </label>
               <textarea
-            className="w-full p-2 border border-gray-300 rounded h-48"
-            placeholder="Enter the Job Description & Targeting Company"
-          />
+                value={jobDescription}
+                onChange={(e) => setJobDescription(e.target.value)}
+                className="w-full p-2 border border-gray-300 rounded h-48"
+                placeholder="Enter the Job Description & Targeting Company"
+              />
             </div>
             <button
+              onClick={generateAnswer}
               className="w-full bg-gradient-to-br from-[#868CFF] to-[#4318FF] text-white p-2 rounded"
             >
               Generate
@@ -78,13 +108,12 @@ const FinalLetter = () => {
       {/* Editor Section */}
       <div className="w-full md:w-1/2 bg-white rounded-lg shadow-lg p-6 ml-0 md:ml-6 mt-5">
         <div className="border-2 border-gray-300 rounded-lg p-4 min-h-[600px]">
-        <JoditEditor
-			ref={editor}
-			value={content}
-			tabIndex={1} // tabIndex of textarea
-			onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
-			onChange={newContent => {}}
-		/>
+          <JoditEditor
+            ref={editor}
+            value={answer}
+            tabIndex={1} // tabIndex of textarea
+            onBlur={(newContent) => setAnswer(newContent)} // preferred to use only this option to update the content for performance reasons
+          />
         </div>
       </div>
     </div>
