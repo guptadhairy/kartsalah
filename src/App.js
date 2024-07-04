@@ -19,6 +19,7 @@ import MainContent from './pages/MainContent'
 import BuildResume2 from './pages/BuildResume2'
 import BuildResume3 from './pages/BuildResume3' 
 import BuildResume4 from './pages/BuildResume4'   
+import InterviewQuestions from './pages/InterviewQuestions'
 
 
 const App = () => {
@@ -31,7 +32,7 @@ const App = () => {
       <Route path='/checkscore' element={<CheckScore />} />
       <Route path='/linkedin' element={<LinkedIn />} />
       <Route path='/updateprofile' element={<UpdateProfile />} />
-      <Route path='/settings' element={<Settings />} />
+      <Route path='/interviewquestions' element={<InterviewQuestions />} />
       <Route path='/logout' element={<Signout />} />
       <Route path='/login' element={<Login />} />
       <Route path='/ourblogs' element={<OurBlogs />} />

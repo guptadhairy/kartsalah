@@ -100,8 +100,8 @@ const SideBar = ({ isExpanded, setIsExpanded }) => {
               {isExpanded && <span className="text-lg lg:text-xl">Cover Letter Generation</span>}
             </Link>
             <Link
-              to="/settings"
-              className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/settings')} h-12`}
+              to="/interviewquestions"
+              className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/interviewquestions')} h-12`}
             >
               <MdOutlineQuestionAnswer className="h-8 w-8" />
               {isExpanded && <span className="text-lg lg:text-xl">Interview Questions</span>}
@@ -168,8 +168,8 @@ const SideBar = ({ isExpanded, setIsExpanded }) => {
                 <span className="text-lg lg:text-xl">Cover Letter</span>
               </Link>
               <Link
-                to="/settings"
-                className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/settings')} h-12`}
+                to="/interviewquestions"
+                className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/interviewquestions')} h-12`}
               >
                 <MdOutlineQuestionAnswer className="h-8 w-8" />
                 <span className="text-lg lg:text-xl">Interview Questions</span>
