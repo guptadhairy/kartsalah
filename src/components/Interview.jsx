@@ -1,8 +1,10 @@
 import React from "react";
 import cover from "../assets/inter1.png";
+import { useNavigate } from "react-router-dom";
 
 
 const Interview = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col md:flex-row w-full h-full p-6 relative">
       {/* Blue Background for Right Section */}
@@ -73,15 +75,15 @@ const Interview = () => {
               <label className="block text-gray-700 mb-2">
                 Job Description & Company
               </label>
-              <textarea
+              <textarea rows={4} cols={6}
                 className="w-full p-2 border border-gray-300 rounded"
-                placeholder="Enter the Job Description & Targeting Company"
+                placeholder="Enter the job description, detailing the skills, responsibilities and qualifications."
               />
             </div>
-            <button
+            <button onClick={()=> navigate("/technicalquestions")}
               className="w-full bg-gradient-to-br from-[#868CFF] to-[#4318FF] text-white p-2 rounded"
             >
-              Generate
+              Start Interview
             </button>
           </div>
         </div>
