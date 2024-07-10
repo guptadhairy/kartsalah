@@ -21,6 +21,7 @@ import BuildResume3 from './pages/BuildResume3'
 import BuildResume4 from './pages/BuildResume4'   
 import InterviewQuestions from './pages/InterviewQuestions'
 import TechnicalQuestions from './pages/TechnicalQuestions'
+import BehaviouralQuestions from './pages/BehaviouralQuestions'
 
 
 const App = () => {
@@ -46,6 +47,7 @@ const App = () => {
       <Route path='/buildresumepage3' element={<BuildResume3 />} />
       <Route path='/buildresumepage4' element={<BuildResume4 />} /> 
       <Route path='/technicalquestions' element={<TechnicalQuestions />} />
+      <Route path='/behaviouralquestions' element={<BehaviouralQuestions />} />
 
     </Routes>
    </Router>
