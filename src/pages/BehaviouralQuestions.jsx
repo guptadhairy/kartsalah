@@ -3,6 +3,7 @@ import SideBar from "../components/SideBar";
 import { IoIosSearch, IoMdArrowDropdown } from "react-icons/io";
 import { FaBell } from "react-icons/fa";
 import avatar from "../assets/Avatar.png";
+import mike from "../assets/Microphone.png";
 import Timer from "../components/Timer";
 import QuestionTracker from "../components/QuestionTracker";
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
@@ -168,7 +169,7 @@ const BehaviouralQuestions = () => {
           <Timer initialTime={1800} />
         </div>
         <div className="flex justify-center items-center flex-col mt-10">
-          <div className="w-full max-w-2xl bg-white rounded-lg shadow p-6">
+          <div className="w-full max-w-2xl bg-white rounded-lg shadow-xl p-6">
             <h2 className="text-xl font-semibold text-[#4a42ec] mb-2">
               {behaviouralQuestions[currentQuestionIndex].title}
             </h2>
@@ -177,7 +178,7 @@ const BehaviouralQuestions = () => {
             </p>
             <div className="relative border border-[#4a42ec] rounded-lg p-4">
               <textarea
-                className="w-full h-40 border-none resize-none focus:ring-0"
+                className="w-full h-40 flex justify-center items-center border-none resize-none focus:outline-none"
                 value={answer}
                 onChange={handleTextareaChange}
               />
@@ -185,9 +186,9 @@ const BehaviouralQuestions = () => {
                 onClick={listening ? handleStopListening : handleStartListening}
                 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-5xl text-[#4a42ec] focus:outline-none"
               >
-                🎤
+                <img src={mike} alt="speak" className="h-[70px] w-[70px]" />
               </button>
-              <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-[#4a42ec]">
+              <div className="flex justify-center items-center">
                 0:00/3:00
               </div>
             </div>
