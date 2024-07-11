@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { ErrorOutline } from "@mui/icons-material";
 import { ImStatsBars } from "react-icons/im";
-
+import { useNavigate } from "react-router-dom";
 const SemiCircularGauge = ({ value }) => {
   const size = 140;
   const strokeWidth = 14;
@@ -10,7 +10,7 @@ const SemiCircularGauge = ({ value }) => {
   const radius = (size - strokeWidth) / 2;
   const circumference = Math.PI * radius;
   const offset = circumference - (value / 100) * circumference;
-
+   
   return (
     <svg width={size} height={size / 2} className="transform rotate-360">
       <circle
@@ -38,6 +38,11 @@ const SemiCircularGauge = ({ value }) => {
 };
 
 const ResumeScoreCard = () => {
+  const navigate = useNavigate();
+   const handleVerification = () => {
+     navigate("/resumeverification");
+   };
+
   return (
     <div className="w-[90vw] sm:w-[70vw] h-[370px] lg:w-[30vw] p-4 sm:p-6 bg-white rounded-[25px] shadow-md overflow-hidden">
       <h2 className="text-base sm:text-lg flex gap-1 font-semibold text-gray-400">
@@ -84,8 +89,11 @@ const ResumeScoreCard = () => {
         </div>
       </div>
       <div className="flex items-center flex-col mt-3">
-        <button className="w-[70%] sm:w-[50%] text-xs sm:text-sm py-2 px-4 bg-dp text-white rounded-2xl hover:bg-pp focus:outline-none">
-          Fix My Resume
+        <button
+          className="w-[70%] sm:w-[50%] text-xs sm:text-sm py-2 px-4 bg-dp text-white rounded-2xl hover:bg-pp focus:outline-none"
+          onClick={handleVerification}
+        >
+          Verify
         </button>
       </div>
     </div>
