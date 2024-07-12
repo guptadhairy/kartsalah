@@ -23,6 +23,7 @@ import InterviewQuestions from './pages/InterviewQuestions'
 import TechnicalQuestions from './pages/TechnicalQuestions'
 import BehaviouralQuestions from './pages/BehaviouralQuestions'
 import ResumeVerificationPage from './pages/ResumeVerification'  
+import Admin from './pages/Admin'
 
 
 const App = () => {
@@ -50,6 +51,7 @@ const App = () => {
       <Route path='/technicalquestions' element={<TechnicalQuestions />} />
       <Route path='/behaviouralquestions' element={<BehaviouralQuestions />} />
       <Route path='/resumeverification' element={<ResumeVerificationPage />} /> 
+      <Route path='/admin' element={<Admin />} />
 
     </Routes>
    </Router>

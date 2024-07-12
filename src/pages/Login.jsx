@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import sign from "../assets/sign.png";
 import sk from "../assets/sk1.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const [activeButton, setActiveButton] = useState('student');
+
+  const handleButtonClick = (buttonType) => {
+    setActiveButton(buttonType);
+    if (buttonType === 'admin') {
+      navigate("/admin");
+    }
+  };
+
   return (
     <div className="flex flex-col lg:flex-row h-screen">
       <div className="w-full lg:w-1/2 h-1/2 lg:h-full bg-gradient-to-br from-[#868CFF] to-[#4318FF] flex flex-col justify-center items-start p-8 lg:p-20 py-10 lg:py-0">
@@ -20,6 +30,20 @@ const Login = () => {
       <div className="w-full lg:w-1/2 bg-white flex flex-col justify-center items-center px-8 lg:px-20 py-10 lg:py-0">
         <img src={sk} alt="SalahKart" className="h-12 lg:h-16 xl:h-20 w-auto" />
         <div className="font-dm-sans text-xl lg:text-2xl xl:text-[25px] mt-4 text-center">Welcome Back!</div>
+        <div className="flex gap-4 mt-4">
+          <button 
+            onClick={() => handleButtonClick('student')} 
+            className={`px-4 py-2 rounded-lg focus:outline-none ${activeButton === 'student' ? 'bg-gradient-to-br from-[#868CFF] to-[#4318FF] text-white' : 'bg-gray-100 text-gray-600'}`}
+          >
+            Student
+          </button>
+          <button 
+            onClick={() => handleButtonClick('admin')} 
+            className={`px-4 py-2 rounded-lg focus:outline-none ${activeButton === 'admin' ? 'bg-gradient-to-br from-[#868CFF] to-[#4318FF] text-white' : 'bg-gray-100 text-gray-600'}`}
+          >
+            Admin
+          </button>
+        </div>
         <div className="font-dm-sans font-medium text-lg lg:text-xl xl:text-[30px] mt-10 text-center">Log In</div>
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 xl:gap-12 mt-7">
           <button className="px-4 py-2 border flex gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150">

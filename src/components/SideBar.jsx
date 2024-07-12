@@ -57,7 +57,7 @@ const SideBar = ({ isExpanded, setIsExpanded }) => {
           <div className="flex flex-col gap-4 px-4 lg:px-6 mt-6">
             <Link
               to="/checkscore"
-              className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/checkscore', '/resumeupload')} h-12`}
+              className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/checkscore', '/resumeupload', '/resumeverification')} h-12`}
             >
               <AiOutlineFileDone className="h-8 w-8" />
               {isExpanded && <span className="text-lg lg:text-xl">Resume Score Check</span>}
@@ -125,7 +125,7 @@ const SideBar = ({ isExpanded, setIsExpanded }) => {
             <div className="flex flex-col gap-4">
               <Link
                 to="/checkscore"
-                className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/checkscore', '/resumeupload')} h-12`}
+                className={`flex gap-4 items-center py-2 px-4 w-full ${getLinkClassName('/checkscore', '/resumeupload', '/resumeverification')} h-12`}
               >
                 <AiOutlineFileDone className="h-8 w-8" />
                 <span className="text-lg lg:text-xl">Resume Score Check</span>
