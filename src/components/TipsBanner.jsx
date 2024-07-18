@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const TipsBanner = () => {
   return (
-    <div className="space-y-6 ">
+    <div className=" w-full flex flex-grow gap-4 pt-4 ">
       {/* Important Tips Section */}
       <div className="p-4 rounded-[25px] border-l-[10px] min-w-[27vw]  border-dp/60 bg-lp shadow-md">
         <div className="flex items-start space-x-4">

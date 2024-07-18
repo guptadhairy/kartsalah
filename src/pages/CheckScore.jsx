@@ -11,6 +11,7 @@ import Features from "../components/ExploreOtherFeatures";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import TipsBanner from "../components/TipsBanner";
 import Skeleton from "@mui/material/Skeleton";
+import ResumeVerification from "../components/ResumeVerificationCard";
 
 const CheckScore = () => {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
@@ -158,18 +159,26 @@ const CheckScore = () => {
             {loading ? (
               <Skeleton variant="rectangular" height={300} />
             ) : (
-              <ResumeScoreCard />
+              <ImprovementAnalysis />
             )}
           </div>
           <div>
             {loading ? (
               <Skeleton variant="rectangular" height={300} />
             ) : (
-              <ImprovementAnalysis />
+              <ResumeVerification />
             )}
           </div>
         </div>
         <div className="flex flex-col lg:flex-row gap-4 mx-3 mt-6">
+          <div>
+            {loading ? (
+              <Skeleton variant="rectangular" height={300} />
+            ) : (
+              <ResumeScoreCard />
+            )}
+          </div>
+
           <div className="w-full lg:w-1/3">
             {loading ? (
               <Skeleton variant="rectangular" height={200} />
@@ -184,13 +193,13 @@ const CheckScore = () => {
               <Features />
             )}
           </div>
-          <div className="w-full lg:w-1/3">
-            {loading ? (
-              <Skeleton variant="rectangular" height={200} />
-            ) : (
-              <TipsBanner />
-            )}
-          </div>
+        </div>
+        <div className="w-full ">
+          {loading ? (
+            <Skeleton variant="rectangular" height={200} />
+          ) : (
+            <TipsBanner />
+          )}
         </div>
       </div>
     </div>
