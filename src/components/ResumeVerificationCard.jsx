@@ -1,7 +1,9 @@
 import React from "react";
 import { FcViewDetails } from "react-icons/fc";
+import { useNavigate } from "react-router-dom";
 
 const ResumeVerification = () => {
+  const navigate = useNavigate();
   return (
     <div className="w-full mx-auto bg-white rounded-3xl shadow-lg p-4 sm:p-6  lg:h-[370px]">
       <div className="flex items-center mb-2">
@@ -54,7 +56,7 @@ const ResumeVerification = () => {
         +3 More
       </p>
 
-      <button className="w-full bg-indigo-600 text-white rounded-xl py-2 text-xs sm:text-sm font-semibold hover:bg-indigo-700 transition duration-300">
+      <button onClick={()=> navigate("/resumeverification")} className="w-full bg-indigo-600 text-white rounded-xl py-2 text-xs sm:text-sm font-semibold hover:bg-indigo-700 transition duration-300">
         Verify Document
       </button>
     </div>

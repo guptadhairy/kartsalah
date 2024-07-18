@@ -64,13 +64,7 @@ const Interview = () => {
                 </div>
               </div>
             </div>
-            <div className="mb-4">
-              <label className="block text-gray-700 mb-2">Interview Type</label>
-              <div className="flex w-full gap-4">
-                <div className="w-full bg-purple-300 flex justify-center items-center h-9 rounded-lg">Behavioural</div>
-                <div className="w-full bg-purple-300 flex justify-center items-center h-9 rounded-lg">Technical</div>
-              </div>
-            </div>
+            
             <div className="mb-6">
               <label className="block text-gray-700 mb-2">
                 Job Description & Company
@@ -80,11 +74,13 @@ const Interview = () => {
                 placeholder="Enter the job description, detailing the skills, responsibilities and qualifications."
               />
             </div>
-            <button onClick={()=> navigate("/technicalquestions")}
-              className="w-full bg-gradient-to-br from-[#868CFF] to-[#4318FF] text-white p-2 rounded"
-            >
-              Start Interview
-            </button>
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">Interview Type</label>
+              <div className="flex w-full gap-4">
+                <div onClick={()=> navigate("/behaviouralquestions")} className="w-full bg-purple-300 flex justify-center items-center h-9 rounded-lg cursor-pointer">Behavioural</div>
+                <div onClick={()=> navigate('/technicalquestions')} className="w-full bg-purple-300 flex justify-center items-center h-9 rounded-lg cursor-pointer">Technical</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
