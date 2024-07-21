@@ -6,25 +6,45 @@ const FinalLetter = () => {
   const editor = useRef(null);
   const [jobRole, setJobRole] = useState("");
   const [jobDescription, setJobDescription] = useState("");
+  const [companyName, setCompanyName] = useState("");
   const [answer, setAnswer] = useState("");
+  const [resume, setResume] = useState(null); // State for storing the resume
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setResume(file);
+  };
 
   const generateAnswer = async () => {
+    if (!resume) {
+      setAnswer("Please upload a resume.");
+      return;
+    }
+
     setAnswer("Loading...");
-    
-    // Combine job role and job description into a single prompt with instructions
-    const prompt = `Please create a cover letter for the following job role: ${jobRole}. Here is the job description and company information: ${jobDescription}`;
+
+    // Create FormData object to send the file and other data
+    const formData = new FormData();
+    formData.append('resume_file', resume);
+    formData.append('job_description', jobDescription);
+    formData.append('company_name', companyName);
+    formData.append('job_title', jobRole);
 
     try {
-      const response = await axios.post('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyCsC1Vz1FkOhfCEI8D_VshclKtKD1fkXMo', {
-        contents: [
-          {
-            parts: [{ text: prompt }]
-          }
-        ]
+      const response = await axios.post('http://20.197.20.87:8000/cover_letter/gen/100', formData, {
+        headers: {
+          'accept': 'application/json',
+          'Content-Type': 'multipart/form-data',
+        },
+        params: {
+          job_description: jobDescription,
+          company_name: companyName,
+          job_title: jobRole,
+        }
       });
 
       // Extract the generated content
-      const generatedText = response.data.candidates[0].content.parts[0].text;
+      const generatedText = response.data.cover_letter;
       setAnswer(generatedText);
     } catch (error) {
       console.error('Error generating content:', error);
@@ -33,14 +53,13 @@ const FinalLetter = () => {
   }
 
   return (
-    <div className="flex flex-col md:flex-row p-6  min-h-screen">
+    <div className="flex flex-col md:flex-row p-6 min-h-screen">
       {/* Cover Letter Generator Section */}
-      <div className="bg-gradient-to-br from-[#868CFF] to-[#4318FF] rounded-3xl flex-1 mt-[140px] ">
+      <div className="bg-gradient-to-br from-[#868CFF] to-[#4318FF] rounded-3xl flex-1 mt-[140px]">
         <div className="flex justify-center items-center">
-          <div className=" bg-purple-100 w-[550px] p-6 rounded-3xl h-[700px] mt-[-120px]">
-            <h2 className="text-2xl text-blue-600 mb-4 ">
-              <span className="text-black mr-2">Generate Your</span> Cover
-              Letter
+          <div className="bg-purple-100 w-[550px] p-6 rounded-3xl h-[700px] mt-[-120px]">
+            <h2 className="text-2xl text-blue-600 mb-4">
+              <span className="text-black mr-2">Generate Your</span> Cover Letter
             </h2>
             <div className="relative mb-4">
               <div className="absolute inset-0 bg-purple-100 border-2 border-dashed border-purple-400 p-4 rounded-lg" />
@@ -49,6 +68,7 @@ const FinalLetter = () => {
                   type="file"
                   accept=".pdf,.docx"
                   className="opacity-0 absolute inset-0 w-full h-full cursor-pointer"
+                  onChange={handleFileChange} // Handle file change
                 />
                 <div className="text-center">
                   <svg
@@ -65,9 +85,7 @@ const FinalLetter = () => {
                   </svg>
                   <p className="text-gray-700 mt-2">
                     Drag & Drop to Upload Resume or{" "}
-                    <span className="text-purple-400 cursor-pointer">
-                      Browse
-                    </span>
+                    <span className="text-purple-400 cursor-pointer">Browse</span>
                   </p>
                   <p className="text-gray-500 text-sm">
                     Supported Resume Formats: PDF, DOCX
@@ -78,10 +96,19 @@ const FinalLetter = () => {
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">Job Role</label>
               <input
-                placeholder='Enter your Job Role'
-                className='w-full rounded-lg h-12 p-4'
+                placeholder="Enter your Job Role"
+                className="w-full rounded-lg h-12 p-4"
                 value={jobRole}
                 onChange={(e) => setJobRole(e.target.value)}
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">Company Name</label>
+              <input
+                placeholder="Enter the Company Name"
+                className="w-full rounded-lg h-12 p-4"
+                value={companyName}
+                onChange={(e) => setCompanyName(e.target.value)}
               />
             </div>
             <div className="mb-6">
@@ -91,7 +118,7 @@ const FinalLetter = () => {
               <textarea
                 value={jobDescription}
                 onChange={(e) => setJobDescription(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded h-48"
+                className="w-full p-2 border border-gray-300 rounded h-28"
                 placeholder="Enter the Job Description & Targeting Company"
               />
             </div>
