@@ -25,13 +25,15 @@ import BehaviouralQuestions from './pages/BehaviouralQuestions'
 import ResumeVerificationPage from './pages/ResumeVerification'  
 import Admin from './pages/Admin'
 import TeamsStudents from "./pages/TeamsStudents";
+import Landing from './pages/Landing'
 
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<SignUp />} />
+        <Route path='/' element={<Landing />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/buildresume" element={<BuildResume />} />
         <Route path="/analyzeresume" element={<AnalyzeResume />} />
         <Route path="/checkscore" element={<CheckScore />} />
